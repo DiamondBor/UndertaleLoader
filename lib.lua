@@ -2,6 +2,11 @@ local lib = {}
 
 function lib:init()
     UndertaleLoader.init()
+
+    if not Mod.libs["magical-glass"] then
+        Kristal.Console:log("[color:yellow]\"magical-glass\" library is missing.")
+        Kristal.Console:log("[color:yellow]Using Magical Glass is recommended, and is required to use some features.")
+    end
     
     if Mod.libs["magical-glass"] then
         Utils.hook(LightSaveMenu, "draw", function(orig, self)
