@@ -226,8 +226,10 @@ function UndertaleSave:load()
     Game.save_name = self.name
     Game.lw_money = self.money
     Game.playtime = self.playtime
-    MagicalGlassLib.kills = self.kills
-    MagicalGlassLib:changeSpareColor(self.name_color)
+    if Mod.libs["magical-glass"] then
+        MagicalGlassLib.kills = self.kills
+        MagicalGlassLib:changeSpareColor(self.name_color)
+    end
     for _,party in ipairs(Kristal.getLibConfig("undertale-loader", "partymemberimport")) do
         if Game:hasPartyMember(party) then
             local member = Game:getPartyMember(party)
